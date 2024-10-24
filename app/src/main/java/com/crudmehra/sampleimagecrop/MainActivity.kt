@@ -6,8 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -21,10 +21,10 @@ import com.crudmehra.imagecropper.utils.ImageCropUI
 
 class MainActivity : AppCompatActivity() {
     private var ivCroppedImage: ImageView? = null
-    private var tvPickImage: TextView? = null
+    private var btnPickImage: Button? = null
 
 
-    private lateinit var imageUri : Uri
+    private lateinit var outputImageUri : Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +37,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         ivCroppedImage = findViewById(R.id.ivCroppedImage)
-        tvPickImage = findViewById(R.id.tvPickImage)
+        btnPickImage = findViewById(R.id.tvPickImage)
 
-        tvPickImage?.setOnClickListener {
+        btnPickImage?.setOnClickListener {
              val contentValues = ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, "image_${System.currentTimeMillis()}.jpg")
                 put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
                 put(MediaStore.Images.Media.RELATIVE_PATH, "DCIM/")  // Optional: specify folder
             }
-            imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)!!
+            outputImageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)!!
 
             val intent = CropImage.activity()
                 // to set guidelines on crop
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 // set zoom enable while cropping image by default true
                 .setAutoZoomEnabled(false)
                 // save image in local storage
-                .setOutputUri(imageUri)
+                .setOutputUri(outputImageUri)
                 // set output quality by default 100
                 .setOutputCompressQuality(100)
                 // default JPEG
