@@ -1,7 +1,7 @@
 Android Image Cropper with Kotlin
 =======
 
-![Crop](https://github.com/CRUDMehra/ImageCropperKotlin/blob/main/sample/demo_medium.gif?raw=true)
+![Crop](https://github.com/CRUDMehra/ImageCropperKotlin/blob/main/sample/demo_large.gif?raw=true)
 
 
 ## Features
