@@ -143,7 +143,7 @@ private val launcherRequest = registerForActivityResult(
 
 If anybody face any issue please contact this email
 
-[hello@crudmehra.com](hello@crudmehra.com)
+[hello@crudmehra.com](mailto:hello@crudmehra.com?subject=[GitHub] Image Cropper)
 
 ## License
 Originally forked from [ArthurHub/edmodo/cropper](https://github.com/ArthurHub/Android-Image-Cropper.git).
